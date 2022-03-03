@@ -22,7 +22,12 @@ Query.prototype.submit = function () {
   submit.apply(this, arguments);
 };
 
-console.log(`[🔥DB] FILL-IN SERVER Running on ${process.env.NODE_ENV} mode `);
+console.log(`
+    ####################################################
+    #                    DB Running                    #
+    #  Server Running on ${process.env.NODE_ENV} mode  #
+    ####################################################
+`);
 
 const pool = new Pool({
   ...dbConfig,

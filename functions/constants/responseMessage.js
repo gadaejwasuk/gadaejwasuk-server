@@ -11,4 +11,9 @@ module.exports = {
    * @push
    */
   READ_PUSH_SUCCESS: '푸시 알림 조회 성공',
+
+  /**
+   * @seat
+   */
+  READ_SEAT_SUCCESS: '좌석 현황 조회 성공',
 };
