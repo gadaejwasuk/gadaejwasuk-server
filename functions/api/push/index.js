@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/token', require('./authTokenGET'));
-router.post('/', require('./authPOST'));
+router.get('/', require('./pushGET'));
 
 module.exports = router;
