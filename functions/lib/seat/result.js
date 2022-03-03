@@ -6,11 +6,11 @@ const getSeatData = async (room_number, type) => {
   const seat = await root.getSeatNumber(room_number);
 
   if (room_number == 1 || room_number == 2) {
-    if (type == 1) return await root.getNormalSeatDataBySingle(url, seat, target);
-    return await root.getLaptopSeatDataBySingle(url, seat, target);
+    if (type == 1) return await root.getNormalSeatDataBySingle(url, room_number, type, seat, target);
+    return await root.getLaptopSeatDataBySingle(url, room_number, type, seat, target);
   } else {
-    if (type == 1) return await root.getNormalSeatDataByDouble(url, seat, target);
-    return await root.getLaptopSeatDataByDouble(url, seat, target);
+    if (type == 1) return await root.getNormalSeatDataByDouble(url, room_number, type, seat, target);
+    return await root.getLaptopSeatDataByDouble(url, room_number, type, seat, target);
   }
 };
 

@@ -13,11 +13,11 @@ const getHTML = async (addr) => {
 const getSeatNumber = async (room_number) => {
   let result = {};
 
-  if (room_number === 1) {
+  if (room_number == 1) {
     result = {
       start: 80,
     };
-  } else if (room_number === 2) {
+  } else if (room_number == 2) {
     result = {
       start: 60,
     };
@@ -31,7 +31,7 @@ const getSeatNumber = async (room_number) => {
   return result;
 };
 
-const getNormalSeatDataBySingle = async (url, point, target) => {
+const getNormalSeatDataBySingle = async (url, room_number, type, point, target) => {
   const result = await getHTML(url).then((html) => {
     const $ = cheerio.load(html.data);
     const bodyList = $(target);
@@ -44,7 +44,7 @@ const getNormalSeatDataBySingle = async (url, point, target) => {
         if ($(elem).attr('bgcolor') === NO_AVAILABLE) {
           seatOn = true;
         }
-        seatInfo.push({ [$(elem).find('font').text()]: seatOn });
+        seatInfo.push([room_number, type, $(elem).find('font').text(), seatOn]);
       }
     });
 
@@ -54,7 +54,7 @@ const getNormalSeatDataBySingle = async (url, point, target) => {
   return result;
 };
 
-const getLaptopSeatDataBySingle = async (url, point, target) => {
+const getLaptopSeatDataBySingle = async (url, room_number, type, point, target) => {
   const result = await getHTML(url).then((html) => {
     const $ = cheerio.load(html.data);
     const bodyList = $(target);
@@ -67,7 +67,7 @@ const getLaptopSeatDataBySingle = async (url, point, target) => {
         if ($(elem).attr('bgcolor') === NO_AVAILABLE) {
           seatOn = true;
         }
-        seatInfo.push({ [$(elem).find('font').text()]: seatOn });
+        seatInfo.push([room_number, type, $(elem).find('font').text(), seatOn]);
       }
     });
 
@@ -77,7 +77,7 @@ const getLaptopSeatDataBySingle = async (url, point, target) => {
   return result;
 };
 
-const getNormalSeatDataByDouble = async (url, point, target) => {
+const getNormalSeatDataByDouble = async (url, room_number, type, point, target) => {
   const result = await getHTML(url).then((html) => {
     const $ = cheerio.load(html.data);
     const bodyList = $(target);
@@ -90,7 +90,7 @@ const getNormalSeatDataByDouble = async (url, point, target) => {
         if ($(elem).attr('bgcolor') === NO_AVAILABLE) {
           seatOn = true;
         }
-        seatInfo.push({ [$(elem).find('font').text()]: seatOn });
+        seatInfo.push([room_number, type, $(elem).find('font').text(), seatOn]);
       }
     });
 
@@ -100,7 +100,7 @@ const getNormalSeatDataByDouble = async (url, point, target) => {
   return result;
 };
 
-const getLaptopSeatDataByDouble = async (url, point, target) => {
+const getLaptopSeatDataByDouble = async (url, room_number, type, point, target) => {
   const result = await getHTML(url).then((html) => {
     const $ = cheerio.load(html.data);
     const bodyList = $(target);
@@ -113,7 +113,7 @@ const getLaptopSeatDataByDouble = async (url, point, target) => {
         if ($(elem).attr('bgcolor') === NO_AVAILABLE) {
           seatOn = true;
         }
-        seatInfo.push({ [$(elem).find('font').text()]: seatOn });
+        seatInfo.push([room_number, type, $(elem).find('font').text(), seatOn]);
       }
     });
 

@@ -11,6 +11,7 @@ const serviceAccount = require('./gadaejwasuk-firebase-adminsdk-mx4l0-45e946f092
 const { fail } = require('./lib/util');
 const sc = require('./constants/statusCode');
 const rm = require('./constants/responseMessage');
+const scheduler = require('./scheduler/scheduler');
 
 dotenv.config();
 
@@ -22,6 +23,8 @@ if (admin.apps.length === 0) {
 } else {
   firebase = admin.app();
 }
+
+const job = scheduler.job;
 
 const app = express();
 app.use(cors());
